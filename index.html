@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05070c">
+  <meta name="description" content="NEXOO Scenepacks — a black and blue editor-focused directory with direct links to Visual Logoless scenepack pages.">
+  <title>NEXOO // SCENEPACKS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow glow-one" aria-hidden="true"></div>
+  <div class="bg-glow glow-two" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav-shell">
+    <a class="brand" href="#top" aria-label="NEXOO Scenepacks home">
+      <span class="brand-square">N</span>
+      <span class="brand-word">NEXOO<span class="blue">.</span></span>
+      <span class="brand-tag">SCENEPACKS</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="nav-link active" href="#packs">Browse</a>
+      <button class="nav-link" data-filter="movie">Movies</button>
+      <button class="nav-link" data-filter="show">TV Shows</button>
+      <button class="nav-link" data-filter="game">Games</button>
+    </nav>
+
+    <div class="nav-right">
+      <span class="sync-dot"><i></i> LIVE INDEX</span>
+      <a class="source-pill" href="https://vlscenepacks.com/" target="_blank" rel="noopener noreferrer">VISUAL ↗</a>
+      <button class="menu-trigger" id="menuTrigger" aria-expanded="false" aria-controls="mobilePanel"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="overline"><span></span>NEXOO EDITOR INDEX</div>
+          <h1>YOUR NEXT<br><em>SCENE</em> IS HERE.</h1>
+          <p>Search hundreds of titles, filter by category, and jump straight to the matching Visual Logoless scenepack page.</p>
+
+          <div class="hero-search">
+            <div class="search-symbol">⌕</div>
+            <input id="search" type="search" autocomplete="off" placeholder="Search movies, shows, games…" aria-label="Search scenepacks">
+            <button id="clearSearch" aria-label="Clear search">ESC</button>
+            <kbd>CTRL K</kbd>
+          </div>
+
+          <div class="quick-searches" aria-label="Popular searches">
+            <button data-search="Spider-Man">Spider-Man</button>
+            <button data-search="Batman">Batman</button>
+            <button data-search="Interstellar">Interstellar</button>
+            <button data-search="Breaking Bad">Breaking Bad</button>
+          </div>
+        </div>
+
+        <div class="hero-console" aria-hidden="true">
+          <div class="console-top"><span>INDEX_STATUS</span><strong>READY</strong></div>
+          <div class="console-main">
+            <span class="console-big">N.</span>
+            <div class="console-lines"><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="console-bottom"><span>DIRECT ROUTING</span><span>/scenepack/*</span></div>
+        </div>
+      </div>
+      <a class="scroll-down" href="#packs"><span>EXPLORE LIBRARY</span><b>↓</b></a>
+    </section>
+
+    <section class="library" id="packs">
+      <div class="library-head">
+        <div>
+          <div class="overline muted"><span></span>DIRECT SCENEPACK INDEX</div>
+          <h2>ALL TITLES <small id="count">(0)</small></h2>
+        </div>
+        <div class="library-meta">
+          <span id="syncStatus">Loading index…</span>
+          <a href="https://vlscenepacks.com/" target="_blank" rel="noopener noreferrer">SOURCE ↗</a>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="filters" role="tablist" aria-label="Filter by type">
+          <button class="filter active" data-filter="all">ALL <span id="allCount">0</span></button>
+          <button class="filter" data-filter="movie">MOVIES <span id="movieCount">0</span></button>
+          <button class="filter" data-filter="show">TV <span id="showCount">0</span></button>
+          <button class="filter" data-filter="game">GAMES <span id="gameCount">0</span></button>
+        </div>
+        <label class="sort-box">SORT
+          <select id="sort" aria-label="Sort titles">
+            <option value="source">Source order</option>
+            <option value="az">A — Z</option>
+            <option value="za">Z — A</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="grid" class="cards" aria-live="polite"></div>
+
+      <div id="emptyState" class="empty" hidden>
+        <div class="empty-mark">N</div>
+        <h3>NO MATCHES</h3>
+        <p>Try another title or remove the category filter.</p>
+        <button id="resetSearch">RESET INDEX</button>
+      </div>
+
+      <div id="setupState" class="setup" hidden>
+        <div class="setup-icon">↻</div>
+        <h3>INDEX NOT GENERATED YET</h3>
+        <p>The repository includes an automatic GitHub Actions sync. Push it once and the workflow will generate <code>data/packs.json</code> from the current Visual Logoless category pages.</p>
+      </div>
+    </section>
+
+    <section class="source-card">
+      <div class="source-icon">V</div>
+      <div class="source-text">
+        <div class="overline muted"><span></span>EXTERNAL DESTINATION</div>
+        <h3>NEXOO is the index. Visual hosts the destination.</h3>
+        <p>Clicking a title opens the matching Visual Logoless <code>/scenepack/…</code> page directly. The site does not host or mirror the media files.</p>
+      </div>
+      <a class="source-button" href="https://vlscenepacks.com/" target="_blank" rel="noopener noreferrer">OPEN VISUAL <b>↗</b></a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-left"><strong>NEXOO<span>.</span></strong><small>SCENEPACK DIRECTORY</small></div>
+    <p>Independent front-end index • External destinations belong to their respective owners.</p>
+    <a href="https://vlscenepacks.com/" target="_blank" rel="noopener noreferrer">Visual Logoless ↗</a>
+  </footer>
+
+  <aside class="mobile-panel" id="mobilePanel" aria-hidden="true">
+    <button id="closePanel" class="close-panel">CLOSE ×</button>
+    <a href="#packs">Browse</a>
+    <button data-filter="movie">Movies</button>
+    <button data-filter="show">TV Shows</button>
+    <button data-filter="game">Games</button>
+    <a href="https://vlscenepacks.com/" target="_blank" rel="noopener noreferrer">Visual ↗</a>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
